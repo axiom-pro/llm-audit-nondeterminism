@@ -1,0 +1,32 @@
+# --- 内部ドキュメント（公開しない・戦略/受注/一次パス/氏名を含みうる） ---
+PLAN.md
+BUILD_LOG.md
+RESEARCH_BASIS_RECOVERED.md
+
+# 記事本文の正本は Zenn 側。リポジトリは再現キットに徹し、READMEから記事へリンクする。
+ARTICLE.md
+
+# --- 環境・生成物 ---
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+
+# --- スクラッチ/一時・中間/汚染成果物（公開集合に混ぜない） ---
+scratch/
+*.tmp
+fixtures/smoke*.jsonl
+fixtures/audit_logs*_uncorrected.jsonl
+fixtures/audit_logs.jsonl.prev
+results/*_partial*.json
+results/m2a_*.json
+results/smoke*.json
+results/_*.json
+results/*.log
+results/spike_*.txt
+spike/
+# 公開する results/ = gt.csv, m2_summary.json, seed_probe.txt のみ（プロセスlog/spike出力は除外）
+
+# 注: targets/ spike/ scripts/ fixtures/ results/ gt.csv README ARTICLE PROVENANCE
+#     Dockerfile Makefile .gitattributes は公開対象。
+#     公開前に secrets/PII/絶対パス を走査し「公開集合」をシミュレートすること。

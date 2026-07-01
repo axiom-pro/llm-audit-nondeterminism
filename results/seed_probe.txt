@@ -1,0 +1,23 @@
+warmup...
+
+[Group1] temp0 seed=777 x6 (within-seed residual):
+  run0: 736a930d4a03 (3.8s)
+  run1: 736a930d4a03 (4.0s)
+  run2: 736a930d4a03 (3.9s)
+  run3: 736a930d4a03 (3.9s)
+  run4: 736a930d4a03 (3.9s)
+  run5: 736a930d4a03 (4.0s)
+
+[Group2] temp0 seeds 1,2,3,101,202,303 (between-seed):
+  seed1: 736a930d4a03 (4.0s)
+  seed2: 736a930d4a03 (3.9s)
+  seed3: 736a930d4a03 (3.9s)
+  seed101: 736a930d4a03 (3.9s)
+  seed202: 736a930d4a03 (4.0s)
+  seed303: 736a930d4a03 (3.9s)
+
+===== VERDICT =====
+Group1 within-seed unique: 1/6  -> residual(reduction-order) absent
+Group2 between-seed unique: 1/6
+total distinct raw across all 12: 1
+=> temp0 fully deterministic here; seed INACTIVE (all identical).

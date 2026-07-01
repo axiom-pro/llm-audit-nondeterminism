@@ -1,0 +1,45 @@
+# llm-audit-nondeterminism
+
+同じコードをローカルLLM（Qwen2.5-Coder 1.5B/7B・Ollama）に **N回監査させたとき、指摘（`(行番号, カテゴリ)`）がどれだけ一致するか** を実測した再現キット。
+記事：*「同じコードをローカルLLMに51回監査させたら：多数決は"正しさ"より"しつこさ"を選んでいた」*（公開後にリンク）。
+
+## 二層再現（この設計が肝）
+
+- **第1層（生成・非決定・要 Ollama）**：LLM監査の生ログ。著者が1回だけ実行し `fixtures/audit_logs.jsonl` に**凍結**。読者が自分で回すと別の分布になる＝それが論点。
+- **第2層（集計・決定的・LLM不要）**：凍結ログを読んで数表を再生成。**誰が回しても同じ**。
+
+## 再現手順
+
+```bash
+# 第2層（決定的・LLM不要）：凍結ログから数表を再生成
+python scripts/aggregate.py            # -> results/m2_summary.json
+
+# 独立再計算：集計コードを経由せず生ログから主要数値を検算し一致を確認（ALL PASS になる）
+python scripts/verify_independent.py
+
+# 図の再生成
+python scripts/make_figures.py         # -> figures/nofreelunch.png
+
+# （任意・第1層）自分で生成し直す：要 Ollama + Qwen2.5-Coder。凍結ログは .prev に退避される
+#   OLLAMA_EXE=/path/to/ollama bash scripts/run_m2.sh
+# seed 不活性の確認（temp0 で seed を変えても出力が変わらないこと）
+#   python scripts/seed_probe.py        # -> results/seed_probe.txt
+```
+
+Windows は `PYTHONUTF8=1` を推奨。
+
+## 構成
+
+```
+targets/     監査対象コード（欠陥入り target_a / clean / decoy / easy）
+results/gt.csv   グラウンドトゥルース（欠陥の 行×種別・事前登録）
+scripts/     audit_run(生成) aggregate(集計) verify_independent(独立検算) make_figures seed_probe run_m2
+fixtures/    audit_logs.jsonl（N回監査の生ログ・凍結／provenance付き）
+results/     m2_summary.json（数表）・seed_probe.txt など
+figures/     nofreelunch.png
+```
+
+## ライセンス
+
+コード：MIT。データ（fixtures/ results/ targets/ gt.csv）：CC0。
+第三者：Qwen2.5-Coder（Apache-2.0）、Ollama（MIT）。詳細は [LICENSE](LICENSE)。

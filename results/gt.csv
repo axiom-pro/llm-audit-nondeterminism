@@ -1,0 +1,14 @@
+target,gt_id,line,line_lo,line_hi,category,severity,note
+target_a.py,sqli_get_user,9,9,9,SQLInjection,High,string concatenation in cur.execute
+target_a.py,leak_conn,7,6,11,ResourceLeak,Medium,sqlite3 connection never closed
+target_a.py,leak_file,16,15,17,ResourceLeak,Medium,open() handle never closed
+target_a.py,swallow_config,19,17,19,SilentExceptionSwallow,Medium,except returns None without log or reraise
+target_a.py,offbyone_get_item,23,22,24,OffByOne,High,index <= len allows IndexError at index==len
+target_a.py,secret_apikey,28,28,28,HardcodedSecret,High,hardcoded API key literal
+target_a.py,nullderef_render,32,31,32,NullDereference,Medium,user.name accessed without None guard
+target_easy.py,easy_cmdinj,7,6,7,CommandInjection,High,os.system with concatenated user cmd
+target_easy.py,easy_codeinj,11,10,11,CodeInjection,High,eval of caller-supplied expr
+target_easy.py,easy_sqli,15,15,16,SQLInjection,High,SQL built by string concatenation
+target_easy.py,easy_swallow,23,22,23,SilentExceptionSwallow,Medium,bare except then pass
+target_easy.py,easy_secret,26,26,26,HardcodedSecret,High,hardcoded password literal
+target_easy.py,easy_leak,30,29,31,ResourceLeak,Medium,open() handle never closed
