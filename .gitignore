@@ -5,6 +5,8 @@ RESEARCH_BASIS_RECOVERED.md
 
 # 記事本文の正本は Zenn 側。リポジトリは再現キットに徹し、READMEから記事へリンクする。
 ARTICLE.md
+# note物語版の下書き（正本はnote公開ページ・公開リポに含めない）
+NOTE_ARTICLE.md
 
 # --- 環境・生成物 ---
 .venv/
