@@ -1,7 +1,7 @@
 # llm-audit-nondeterminism
 
 同じコードをローカルLLM（Qwen2.5-Coder 1.5B/7B・Ollama）に **N回監査させたとき、指摘（`(行番号, カテゴリ)`）がどれだけ一致するか** を実測した再現キット。
-記事：*「同じコードをローカルLLMに51回監査させたら：多数決は"正しさ"より"しつこさ"を選んでいた」*（公開後にリンク）。
+記事：**[同じコードをローカルLLMに51回監査させたら：多数決は"正しさ"より"しつこさ"を選んでいた](https://zenn.dev/tauridev/articles/llm-audit-nondeterminism)**（Zenn）。
 
 ## 二層再現（この設計が肝）
 
