@@ -7,6 +7,9 @@ RESEARCH_BASIS_RECOVERED.md
 ARTICLE.md
 # note物語版の下書き（正本はnote公開ページ・公開リポに含めない）
 NOTE_ARTICLE.md
+note_assets/
+# 公開後監査の内部文書（訂正追記の作業原稿）
+ZENN_訂正追記_*.md
 
 # --- 環境・生成物 ---
 .venv/
